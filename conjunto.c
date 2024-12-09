@@ -86,10 +86,10 @@ void conjunto_apagar(CONJ **s){
     if((*s) != NULL){
 
         if((*s)->ed == 0)
-            arvore_avl_apagar(&(*s)->estrutura);
+            arvore_avl_apagar((AVL **)&(*s)->estrutura);
 
         else   
-            arvore_rn_apagar(&(*s)->estrutura);
+            arvore_rn_apagar((ARN **)&(*s)->estrutura);
 
     (*s)->tam = 0;
 
@@ -121,37 +121,16 @@ CONJ *conjunto_uniao(CONJ *A, CONJ *B){
     CONJ *C = conjunto_criar(A->ed);
 
     if(A->ed == 0){
-
-        if(A->tam > B->tam){
             
-            arvore_avl_copiar(A->estrutura, C->estrutura);
-            arvore_avl_uniao(C->estrutura, B->estrutura);
-
-        }
-
-        else{
-
-            arvore_avl_copiar(B->estrutura, C->estrutura);
-            arvore_avl_uniao(C->estrutura, A->estrutura);
-        } 
+        arvore_avl_copiar(A->estrutura, C->estrutura);
+        arvore_avl_uniao(C->estrutura, B->estrutura);
 
     }
 
     else{
 
-        if(A->tam > B->tam){
-
-            arvore_rn_copiar(A->estrutura, C->estrutura);
-            arvore_rn_uniao(C->estrutura, B->estrutura);
-
-        }
-
-        else{
-
-            arvore_rn_copiar(B->estrutura, C->estrutura);
-            arvore_rn_uniao(C->estrutura, A->estrutura);            
-
-        }
+        arvore_rn_copiar(A->estrutura, C->estrutura);
+        arvore_rn_uniao(C->estrutura, B->estrutura);
 
     }
 
