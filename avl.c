@@ -20,16 +20,16 @@ struct avl{
 
 AVL *arvore_avl_criar (){
 
-AVL *t = (AVL *)malloc(sizeof(AVL));
+    AVL *t = (AVL *)malloc(sizeof(AVL));
 
-if(t != NULL){
+    if(t != NULL){
 
-t->raiz = NULL;
-t->profunidade = -1;
+        t->raiz = NULL;
+        t->profunidade = -1;
 
 }
 
-return t;
+    return t;
 
 }
 
@@ -290,7 +290,7 @@ NO *avl_remover(NO **raiz, int chave){
 
 bool arvore_avl_remover(AVL *T, int chave){
 
-    if(T != NULL){
+    if(T != NULL && T->raiz != NULL){
 
         T->raiz = avl_remover(&T->raiz, chave);
 
