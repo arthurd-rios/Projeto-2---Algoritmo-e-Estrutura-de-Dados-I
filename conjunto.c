@@ -4,12 +4,12 @@
 
 struct conjunto
 {
-    int ed;
-    void *estrutura;
-    int tam;
+    int ed; // Tipo da estrutura de dado: 0 = AVL e 1 = Árvore Rubro-Negra
+    void *estrutura; // Ponteiro void genérico, para poder apontar para ambas as estruturas 
+    int tam; // Tamanho do conjunto
 };
 
-CONJ *conjunto_criar(int ed){
+CONJ *conjunto_criar(int ed){ // Cria um conjunto e define o tipo de ponteiro, coloca o tamanho em 0 e retorna o conjunto
 
     CONJ *conjunto = (CONJ*) malloc(sizeof(CONJ));
 
@@ -29,7 +29,7 @@ CONJ *conjunto_criar(int ed){
     return conjunto;
 }
 
-bool conjunto_pertence(CONJ *A, int elemento){ /*retornar o nó da árvore*/
+bool conjunto_pertence(CONJ *A, int elemento){ // Checa se um elemento pertence ao conjunto, realizando uma busca na estrutura de dados escolhida
 
     if(A != NULL){
 
@@ -45,7 +45,7 @@ bool conjunto_pertence(CONJ *A, int elemento){ /*retornar o nó da árvore*/
 
 }
 
-bool conjunto_inserir(CONJ *s, int elemento){
+bool conjunto_inserir(CONJ *s, int elemento){ // Insere um elemento na estrutura de dados escolhida
 
     if(s != NULL){
 
@@ -63,7 +63,7 @@ bool conjunto_inserir(CONJ *s, int elemento){
             
 }
 
-bool conjunto_remover(CONJ *s, int elemento){
+bool conjunto_remover(CONJ *s, int elemento){ // Busca e remove um elemento da estrutura de dados escolhida
     
     if(s != NULL){
 
@@ -81,7 +81,7 @@ bool conjunto_remover(CONJ *s, int elemento){
 
 }
 
-void conjunto_apagar(CONJ **s){
+void conjunto_apagar(CONJ **s){ // Apaga o conjunto escolhido
 
     if((*s) != NULL){
 
@@ -100,7 +100,7 @@ void conjunto_apagar(CONJ **s){
     
 }
 
-void conjunto_imprimir(CONJ *s){
+void conjunto_imprimir(CONJ *s){ // Imprime o conjunto em ordem crescente, realizando uma visita em ordem dos nós
     
     if(s != NULL){
 
@@ -113,7 +113,7 @@ void conjunto_imprimir(CONJ *s){
     }
 }
 
-CONJ *conjunto_uniao(CONJ *A, CONJ *B){
+CONJ *conjunto_uniao(CONJ *A, CONJ *B){ // Retorna um conjunto C, que é a união dos conjuntos A e B
 
     if(A == NULL || B == NULL) 
         return NULL;
@@ -122,8 +122,8 @@ CONJ *conjunto_uniao(CONJ *A, CONJ *B){
 
     if(A->ed == 0){
             
-        arvore_avl_copiar(A->estrutura, C->estrutura);
-        arvore_avl_uniao(C->estrutura, B->estrutura);
+        arvore_avl_copiar(A->estrutura, C->estrutura); // Copia a maior árvore em uma terceira árvore
+        arvore_avl_uniao(C->estrutura, B->estrutura); // Insere os elementos do conjunto B que não estão no conjunto A, no conjunto C
 
     }
 
@@ -138,7 +138,7 @@ CONJ *conjunto_uniao(CONJ *A, CONJ *B){
 
     }
 
-CONJ *conjunto_intersecao(CONJ *A, CONJ *B){
+CONJ *conjunto_intersecao(CONJ *A, CONJ *B){ // Retorna um conjunto C, que é a interseção dos conjuntos A e B
 
     if(A == NULL || B == NULL) 
         return NULL;
@@ -147,7 +147,7 @@ CONJ *conjunto_intersecao(CONJ *A, CONJ *B){
 
     if(A->ed == 0){
 
-        if(A->tam > B->tam)
+        if(A->tam > B->tam) 
             arvore_avl_intersecao(A->estrutura, B->estrutura, C->estrutura);
 
         else 
