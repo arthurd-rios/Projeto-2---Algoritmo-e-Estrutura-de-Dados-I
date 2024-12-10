@@ -363,7 +363,8 @@ bool arvore_rn_vazia(ARN *T){
 
 }
 
-NO *arn_copiar(NO *raiz){
+NO *arn_copiar(NO *raiz){ // Copia uma árvore em outra e retorna a raiz dela
+
 
     if(raiz == NULL)
         return NULL;
@@ -392,7 +393,7 @@ void arvore_rn_copiar(ARN *T1, ARN *T2){
 
 }
 
-void arn_uniao(ARN *T1, NO *raiz){
+void arn_uniao(ARN *T1, NO *raiz){ // Checa se um elemento de uma árvore T2 está na T1, caso ela não esteja, insere na T1, para formar a união dos conjuntos
 
     if(raiz != NULL){
 
@@ -417,7 +418,7 @@ void arvore_rn_uniao(ARN *T1, ARN *T2){
 
 
 
-void arn_intersecao(ARN *T1, NO *raiz, ARN *T3){
+void arn_intersecao(ARN *T1, NO *raiz, ARN *T3){ // Checa se um elemento da T1 está na T2, caso esteja, insere em uma terceira árvore T3, assim, a T3 se torna a interseção
 
     if(raiz != NULL){
 
