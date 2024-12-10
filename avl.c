@@ -349,7 +349,7 @@ bool arvore_avl_vazia(AVL *T){
 
 }
 
-NO *avl_copiar(NO *raiz){
+NO *avl_copiar(NO *raiz){ // Copia uma árvore em outra e retorna a raiz dela
 
     if(raiz == NULL)
         return NULL;
@@ -369,7 +369,7 @@ NO *avl_copiar(NO *raiz){
 
 }
 
-void arvore_avl_copiar(AVL *T1, AVL *T2){
+void arvore_avl_copiar(AVL *T1, AVL *T2){ 
 
     if(T1 == NULL || T2 == NULL)
         return;
@@ -378,7 +378,7 @@ void arvore_avl_copiar(AVL *T1, AVL *T2){
 
 }
 
-void avl_uniao(AVL *T1, NO *raiz){
+void avl_uniao(AVL *T1, NO *raiz){ // Checa se um elemento de uma árvore T2 está na T1, caso ela não esteja, insere na T1, para formar a união dos conjuntos
 
     if(raiz != NULL){
 
@@ -392,7 +392,7 @@ void avl_uniao(AVL *T1, NO *raiz){
 
 }
 
-void arvore_avl_uniao(AVL *T1, AVL *T2){
+void arvore_avl_uniao(AVL *T1, AVL *T2){ 
 
     if(T1 == NULL || T2 == NULL)
         return;
@@ -401,7 +401,7 @@ void arvore_avl_uniao(AVL *T1, AVL *T2){
 
 }
 
-void avl_intersecao(AVL *T1, NO *raiz, AVL *T3){
+void avl_intersecao(AVL *T1, NO *raiz, AVL *T3){ // Checa se um elemento da T1 está na T2, caso esteja, insere em uma terceira árvore T3, assim, a T3 se torna a interseção
 
     if(raiz != NULL){
 
